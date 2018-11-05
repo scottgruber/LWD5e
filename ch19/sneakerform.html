@@ -1,0 +1,222 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset="utf-8" >
+   <title>Contest Entry Form</title>
+<style type="text/css">
+
+/* Makes sizing form elements more consistent */
+html {
+	box-sizing: border-box;
+	}
+*, *:before, *:after {
+	box-sizing: inherit;
+	}
+
+/* ========= BASIC FONT STYLING ========= */
+
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 100%;
+	margin: 2em 10%;
+	line-height: 1;
+	}
+
+h2 {
+	font-size: 1.2em;
+	margin: 0 0 1.5em 0;
+}
+em {
+	font-size: .8em;
+	color: rgba(0,0,0,.4);
+}
+
+/* ========= CLEARING OUT LIST STYLES ========= */
+
+ul { 
+   list-style-type: none;
+	margin: 0;
+	padding: 0;
+      }
+
+/* ========= ADDING SPACE BELOW LIST ITEMS IN FORM 
+(EXCEPT FOR CHECKBOXES AND RADIO BUTTONS) ========= */
+
+ul li {
+	margin-bottom: 1em; 
+}
+#colors ul li, #features ul li {
+	margin-bottom: 0;
+} 
+
+
+/* ========= FORM DIMENSIONS AND STYLING =========  */
+
+form {
+	max-width: 40em;
+	border: 1px solid #666;
+	border-radius: 10px;
+	background-color:#f2f5d5;
+	padding: 1em;
+	}
+	
+/* ========= FLEXBOX ALIGNMENT STYLES ============ */
+
+li {
+	  /* the label and input become flex items within each list item */
+	  /* Wrapping is turned on so labels stack above inputs on narrow viewports */
+	display: flex;
+	flex-wrap: wrap;
+}
+label {
+	/* labels are fixed at 8ems wide with a little margin to keep them 
+	from bumbing into other elements */
+	flex: 0 0 8em;
+	margin-right: 1em;
+	margin-bottom: 4px;
+	color: #04699d;
+
+}
+input, textarea, fieldset {
+	/* form inputs and fieldsets are fully flexible to fill the available width */
+	flex: 1 1 20em;
+}
+
+#features label, #colors label {
+	/* Because labels are used differently in the lists within fieldsets,
+	(there's one for each radio button and checkbox)
+	I need to override the previous flex setting so they line up correctly */
+	flex: 1 1 auto;
+	color: #000;
+}
+
+#colors ul {
+	/* This makes each radio box list item a flex item so they line up horizontally */
+	/* This could also be done by making them display: inline, 
+	but the labels sometimes get separated from their button/box at narrow widths*/
+	display: flex;
+	flex-wrap: wrap;
+}
+
+
+/*  ========= FORM WIDGET STYLES  ========= */
+/* Fonts are set to "inherit" the font-family of the document.*/
+
+input.textinput {
+	height: 2em;
+	border: 1px solid rgba(0,0,0,.3);
+	padding-left: 6px;
+	font-family: inherit;
+	font-size: .875em;
+}
+textarea {
+	display: block;
+	height: 5em;
+	border: 1px solid rgba(0,0,0,.3);
+	padding-left: 6px;
+	font-family: inherit; 
+	font-size: .875em;
+	line-height: 1.25;
+	overflow: auto;
+	resize: none;
+}
+select {
+	width: 6em;
+	font-size: inherit; /* The browser default font size is very small, so I changed it to match the document */
+	margin-right: 10px;
+}
+input[type="submit"] {
+	/* I've changed the style of the button and set its side margins to "auto" so it is 
+	always centered in the width of the form */
+	width: 10em;
+	height: 2em;
+	background: white;
+	border: 1px solid #04699d;
+	border-radius: 4px;
+	font-size: inherit;
+	flex: 0 1 8em;
+	margin: 0 auto;
+}
+
+
+/* ========= FIELDSET AND LEGEND STYLES ========= */
+fieldset {
+	/* Turns off the default box that browsers draw around fieldsets */
+	padding: 0;
+	border: none;
+}
+legend {
+	/* this hides the legend, but it will still be read by screenreaders 
+	for each checkbox/button option for acccessibility */
+	/* NOTE: There is also a label that displays for each fieldset, so I made sure the
+	label and legend were different as not to have the same term read twice */
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+	
+</style> 
+
+</head>
+
+<body>
+
+
+
+<form action="" method="post">
+
+<h2>Custom Sneaker Order Form</h2>
+
+<ul>
+<li><label for="form-name">Name:</label> <input type="text" name="username" id="form-name" class="textinput"></li>
+<li><label for="form-email">Email:</label> <input type="email" name="emailaddress" id="form-email"class="textinput"></li>
+<li><label for="form-tel">Telephone:</label> <input type="tel" name="telephone" id="form-tel"class="textinput"></li>
+<li><label for="form-story">Tell us about yourself:</label> <textarea name="story" maxlength="600" id="form-story" placeholder="No more than 600 characters long"></textarea></li>
+<li>
+<label for="sizes">Size:</label>
+<select name="size">
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+<option>13</option>
+</select> <em>Sizes reflect standard US men's sizes</em>
+</li>
+
+<li>
+<label for="colors">Sneaker Color:</label>
+<fieldset id="colors">
+<legend>Color</legend>
+  <ul>
+  <li><label><input type="radio" name="color" value="red"> Red</label> </li>
+  <li><label><input type="radio" name="color" value="blue"> Blue</label> </li>
+  <li><label><input type="radio" name="color" value="black"> Black</label> </li>
+  <li><label><input type="radio" name="color" value="silver"> Silver</label> </li>
+  </ul>
+</fieldset>
+</li>
+
+<li>
+<label for="features">Add-on Features:</label>
+<fieldset id="features">
+<legend>Feature</legend>
+  <ul>
+  <li><label><input type="checkbox" name="feature" value="laces"> Sparkley laces</label></li>
+  <li><label><input type="checkbox" name="feature" value="logo" checked> Metallic logo</label></li>
+  <li><label><input type="checkbox" name="feature" value="heels"> Light-up heels</label></li>
+  <li><label><input type="checkbox" name="feature" value="mp3"> MP3-enabled</label></li>
+  </ul>
+</fieldset>
+</li>
+<li class="buttons"><input type="submit" value="ENTER"></li>
+
+</ul>
+
+</form>
+</body>
+</html>
